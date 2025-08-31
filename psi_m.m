@@ -3,9 +3,11 @@ function y = psi_m(sig)
     N = length(sig);
     y = zeros(1,N);
     
-    a = 5;
+    m = 5;
+    a = m - 1;
+    C = 0.975;
+    %C = 1.001;
     x0 = sig_a;
-    m = a-1;
     for i = 1:N
         x = sig(i);
         if x == 0
@@ -13,17 +15,17 @@ function y = psi_m(sig)
         end
         flag = 1;
         while flag
-            x1 = a*x0;
-            if abs(x) > x1 %if x is beyond local interval, increase 
-                x0 = a*x0;
-                m = m*a;
+            x1 = m*x0;
+            if abs(x) > x1 %if x is beyond local interval, increase
+                x0 = m*x0;
+                a = a*m;
             else
-                if abs(x) > x0 && abs(x) <= x1 %if x is in local interval, compute 
+                if abs(x) > x0 && abs(x) <= x1 %if x is in local interval, compute
                     flag = 0;
-                    val = sign(x)*m*phi_0((abs(x) - x0)/m);
+                    val = C*sign(x)*a*phi_0((abs(x) - x0)/a);
                 else
-                    x0 = x0/a;
-                    m = m/a;
+                    x0 = x0/m ;
+                    a = a/m ;
                 end
             end
         end

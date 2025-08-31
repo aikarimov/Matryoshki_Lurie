@@ -8,21 +8,22 @@ for j = 1:2
         x0 = [0.3483; 0.3992; -0.6120];
         y0 = -x0;
     else
-        x0 = 4*x0;
+        x0 = 5*x0;
         y0 = -x0;
     end
 
 
     h =  0.01;
-    T = 1500;
+    T = 700;
     tspan = 0:h:T;
     cmap = colormap('lines');
     alph = 0.2;
     
     [~,y1] = ode89(@fpsi2,tspan,x0);
     [~,y2] = ode89(@fpsi2,tspan,y0);
-    % y1 = myRK4(@fpsi2,tspan,x0);
-    % y2 = myRK4(@fpsi2,tspan,y0);
+
+    %y1 = myRK4(@fpsi2,tspan,x0);
+    %y2 = myRK4(@fpsi2,tspan,y0);
 
     figure(1);
     subplot(1,2,1);
@@ -51,7 +52,7 @@ for j = 1:2
     xtickformat('$%g$');
     ytickformat('$%g$');
 
-    set(gcf,'position',[500 100  500  300]);
+    set(gcf,'position',[500 100  500  250]);
 
     figure(2);
     col = [cmap(ctr,:),alph];
@@ -83,5 +84,5 @@ end
  ytickformat('$%g$');
  grid;
  
- text(7.9,-0.5,'$\sigma_a$','interpreter','latex');
- text(-9.4,0.5,'$-\sigma_a$','interpreter','latex');
+ text(7.9,-0.5,'$\sigma_0$','interpreter','latex');
+ text(-9.4,0.5,'$-\sigma_0$','interpreter','latex');

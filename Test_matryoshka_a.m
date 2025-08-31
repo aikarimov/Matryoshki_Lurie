@@ -60,6 +60,6 @@ ylabel('$z$','interpreter','latex');
 set(gca,'TickLabelInterpreter','latex');
 xtickformat('$%g$'); 
 ytickformat('$%g$');
-set(gcf,'position',[500 100  500  300]);
+set(gcf,'position',[500 100  500  250]);
 
 

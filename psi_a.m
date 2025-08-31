@@ -7,7 +7,7 @@ function y = psi_a(x)
 
     a = 4.2;
     %c = 0.32;
-    c = 0.32;
+    c = 0.33;
     sinf = sin(2*pi/a*log(abs(x)));
     %fv = c*x.*sinf;
     %y = sign(x).*(sqrt(fv.^2 + vareps^2) - vareps); %smooth for abs(fv)

@@ -1,5 +1,5 @@
 function y = P(w)
-    a = -25*8.0391;
+    a = -25*8.039112076260260;
     b = -a;
     N = length(w);
     y = zeros(1,N);
