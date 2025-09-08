@@ -1,6 +1,4 @@
 close all
-%x0 = [0.3483; 0.3992; -0.6120];
-%x0 = [0.38; 0.55; -0.59];
 x0 = [0.3485; 2.4173; -0.6421];
 y0 = -x0;
 global sig_a
@@ -17,7 +15,6 @@ for n = -1:1
     for i = -1:1
         c = [-19; -3.5; -3.4];
         cp = 1.0577;
-        %cp = 1.057746125134262;
         xstart = m^i*x0 + [(cp + 5/2*sig_a)*n; 0; 0];
         ystart = m^i*y0 + [(cp + 5/2*sig_a)*n; 0; 0];
         [~,y1] = ode89(@fmatryosh_P,tspan,xstart);
@@ -68,4 +65,5 @@ ylabel('$y$','interpreter','latex');
 set(gca,'TickLabelInterpreter','latex');
 xtickformat('$%g$');
 ytickformat('$%g$');
+
 grid;
