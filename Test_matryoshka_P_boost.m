@@ -9,7 +9,6 @@ h =  0.01;
 T = 1000;
 tspan = 0:h:T;
 m = 5;
-%cmap = colormap('lines');
 cmap = [2 17 24;
         0 95 114;
         9 147 150;
@@ -27,12 +26,10 @@ ctr = 1;
 xp = fzero( @(x)P(-19*x),2.5*sig_a);
 cp = xp - 2.5*sig_a;
 
-
 yshift = 274.1592;
 for p = 0:1 % boosting
     for n = -1:1 % inner grid
         for i = -4:1 % matryoshka
-
             xstart = m^i*x0 + [(cp + 5/2*sig_a)*n; (2*pi*K)*p; 0];
             ystart = m^i*y0 + [(cp + 5/2*sig_a)*n; (2*pi*K)*p; 0];
             [~,y1] = ode89(@fmatryosh_P_boost,tspan,xstart);
@@ -85,8 +82,6 @@ figure(4);
 subplot(2,3,[1,2,4,5]);
 xlabel('$x$','interpreter','latex');
 ylabel('$y$','interpreter','latex');
-%xtickformat('$%g$'); 
-%ytickformat('$%g$');
 yticks([0, 2*pi*K - yshift]);
 yticklabels({'$0$', '$2 \pi K$'});
 xticks([-cp - 5/2*sig_a,0,cp + 5/2*sig_a]);
@@ -99,4 +94,5 @@ plot([-40,40],[yzero + ypm,yzero + ypm],'--k'); %line
 plot([-40,40],[yzero - ypm,yzero - ypm],'--k'); %line
 
 set(gcf,'Position',[500, 200, 430,  325]);
+
 
